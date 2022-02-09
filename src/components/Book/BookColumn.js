@@ -16,14 +16,17 @@ function BookColumn(props) {
   }, [headColumns]);
 
   const renderedRows = useMemo(() => {
-    return rows.map((row, rowIndex) => (
+    return rows?.map((row, rowIndex) => (
       <tr key={`${row.join("_")}__${rowIndex}}`}>
-        {row.map((cell, cellIndex) => (
-          <td key={`${cell}__${cellIndex}`}>{cell}</td>
-        ))}
+        {row.map((cell, cellIndex) => {
+          const { fixed } = headColumns[cellIndex];
+          const formattedCell = fixed ? cell.toFixed(fixed) : cell;
+
+          return <td key={`${cell}__${cellIndex}`}>{formattedCell}</td>;
+        })}
       </tr>
     ));
-  }, [rows]);
+  }, [rows, headColumns]);
 
   return (
     <table>

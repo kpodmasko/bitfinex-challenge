@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const PRECISIONS = ["P0", "P1", "P2", "P3", "P4", "R0"];
+const PRECISIONS = ["P0", "P1", "P2", "P3", "P4"];
 
 const initialState = {
   pointer: 2,
